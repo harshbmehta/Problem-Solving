@@ -1,3 +1,9 @@
+/*
+Using Dynamic Array
+
+lastURL is used to keep the track of last index on right further which we should not move in forward operation even if there are elements.
+The reason behind that is we do not want to return string beyond that point when we insert the url manually in browser, it overrides the forward operation
+*/
 class BrowserHistory {
     ArrayList<String> visitedURLs;
     int currURL, lastURL;
