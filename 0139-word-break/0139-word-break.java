@@ -1,7 +1,7 @@
+// Time Complexity: O(m.n^2) where m is the length of wordDict and n is length of s
 class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
-        boolean[] dp = new boolean[s.length() + 1];
-
+        boolean[] dp = new boolean[s.length() + 1]; // adding true at the last index
 
         for (int i = 0; i < dp.length; i++) {
             dp[i] = false;
