@@ -9,8 +9,10 @@ class Solution {
         Map<Integer, Integer> count = new HashMap<>();
         List<Integer> bucket[] = new ArrayList[nums.length + 1];                
         
-        for (int num : nums)
-            count.merge(num, 1, Integer::sum);
+        for (int num : nums) {
+            count.put(num, count.getOrDefault(num, 0) + 1);
+        }
+            
         
         for (int key : count.keySet()){
             int freq = count.get(key);
