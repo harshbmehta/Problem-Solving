@@ -7,14 +7,14 @@ class Solution {
      */
      public int[] topKFrequent(int[] nums, int k) {
         Map<Integer, Integer> count = new HashMap<>();
-        List<Integer> bucket[] = new ArrayList[nums.length + 1];                
+         List<Integer> bucket[] = new ArrayList[nums.length+1];
         
         for (int num : nums) {
             count.put(num, count.getOrDefault(num, 0) + 1);
         }
-            
         
-        for (int key : count.keySet()){
+         // Create buckets of freq -> list of elements with that frequency
+      for (int key : count.keySet()){
             int freq = count.get(key);
             if (bucket[freq] == null)
                 bucket[freq] = new ArrayList<>();
