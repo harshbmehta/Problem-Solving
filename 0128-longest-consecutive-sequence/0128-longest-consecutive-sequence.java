@@ -18,7 +18,7 @@ class Solution {
         }
 
         for(int num: numSet) {
-            if(!numSet.contains(num-1)) {
+            if(!numSet.contains(num-1)) { // if the set doesn't contain num-1, it means it is the smallest number, so try to find all the subsequent
                 int currentNum = num;
                 int currentStreak = 1;
                     while(numSet.contains(currentNum+1)) {
