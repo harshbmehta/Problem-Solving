@@ -4,15 +4,15 @@ Time complexity:
 In the set() function, in each call, we push a (timestamp, value) pair in the key bucket, which takes O(L) time to hash the string. Thus, for M calls overall it will take, $O(M.L)$ time.
 
 In the get() function, we use binary search on the key's bucket which can have at most M elements and to hash the string it takes O(L)O(L)O(L) time, thus overall it will take O(L⋅logM)O(L \cdot logM)O(L⋅logM) time for binary search.
-And, for NNN calls overall it will take, $O(N \cdot L \cdot logM)$ time.
+And, for N calls overall it will take, $O(N \cdot L \cdot logM)$ time.
 
 Space complexity:
 
-In the set() function, in each call we store one value string of length L, which takes O(L)O(L)O(L) space.
-Thus, for MMM calls we may store MMM unique values, so overall it may take O(M⋅L)O(M \cdot L)O(M⋅L) space.
+In the set() function, in each call we store one value string of length L, which takes O(L) space.
+Thus, for M calls we may store M unique values, so overall it may take O(M⋅L) space.
 
 In the get() function, we are not using any additional space.
-Thus, for all NNN calls it is a constant space operation.
+Thus, for all N calls it is a constant space operation.
 
 */
 
