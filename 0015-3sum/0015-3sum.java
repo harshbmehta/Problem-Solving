@@ -22,7 +22,7 @@ class Solution {
 
     public void twoSum(int[] nums, int i, List<List<Integer>> res) {
         int L = i+1, R = nums.length-1;
-        while (R > L) {
+        while (L < R) {
             int sum =  nums[i] + nums[L] + nums[R];
 
             if (sum > 0) {
