@@ -11,11 +11,14 @@ class Solution {
         Stack<String> tripOrder = new Stack<>();
         tripOrder.push("JFK");
 
+        // Enter the locations in the stack after polling from the PriorityQueue
+        // till we reach the last location from which there are no further flights
         while(!tripOrder.isEmpty()) {
-            String destination = tripOrder.peek();
+            String destination = tripOrder.peek(); // just peek
             if(visits.getOrDefault(destination, new PriorityQueue()).isEmpty()) {
-                itinerary.addFirst(tripOrder.pop());
+                itinerary.addFirst(tripOrder.pop()); // if there are no more destinations from destination, pop from stack and add it at the front of the LinkedList
             } else {
+                // Keep pushing in stack until there is a next lag of journey from destination
                 tripOrder.push(visits.get(destination).poll());
             }
         }
