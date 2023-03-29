@@ -1,57 +1,51 @@
-class Solution {
+import java.util.*;
 
+class Solution {
     public List<List<String>> solveNQueens(int n) {
-        List<List<String>> ans = new ArrayList<List<String>>();
-        boolean[][] board = new boolean[n][n];
-        queens(board, 0, ans);
-        return ans;
+        Set<Integer> col = new HashSet<>();
+        Set<Integer> posDiag = new HashSet<>(); // (r + c)
+        Set<Integer> negDiag = new HashSet<>(); // (r - c)
+
+        List<List<String>> res = new ArrayList<>();
+        char[][] board = new char[n][n];
+        for (char[] row : board) {
+            Arrays.fill(row, '.');
+        }
+
+        backtrack(0, col, posDiag, negDiag, board, res);
+
+        return res;
     }
 
-    public void queens(boolean[][] board, int row, List<List<String>> ans2) {
-        //base case
-        if (row == board.length) {
-            ArrayList<String> ans = new ArrayList<String>();
-            createAnswer(board, ans);
-            ans2.add(ans);
+    private void backtrack(int r, Set<Integer> col, Set<Integer> posDiag, Set<Integer> negDiag, char[][] board, List<List<String>> res) {
+        int n = board.length;
+
+        if (r == n) {
+            List<String> copy = new ArrayList<>();
+            for (char[] row : board) {
+                copy.add(new String(row));
+            }
+            res.add(copy);
             return;
         }
-        for (int col = 0; col < board.length; col++) {
-            if (isSafe(board, row, col)) {
-                board[row][col] = true;
-                queens(board, row + 1, ans2);
-                board[row][col] = false;
-            }
-        }
-    }
 
-    public void createAnswer(boolean[][] board, ArrayList<String> ans) {
-        for (int i = 0; i < board.length; i++) {
-            StringBuilder str = new StringBuilder();
-            for (int j = 0; j < board[0].length; j++) {
-                if (board[i][j]) {
-                    str.append("Q");
-                } else str.append(".");
+        for (int c = 0; c < n; c++) {
+            if (col.contains(c) || posDiag.contains(r + c) || negDiag.contains(r - c)) {
+                continue;
             }
-            ans.add(str.toString());
-        }
-    }
 
-    public boolean isSafe(boolean[][] board, int row, int col) {
-        for (int i = 0; i < row; i++) {
-            if (board[i][col]) {
-                return false;
-            }
+            col.add(c);
+            posDiag.add(r + c);
+            negDiag.add(r - c);
+            board[r][c] = 'Q';
+
+            backtrack(r + 1, col, posDiag, negDiag, board, res);
+            
+            col.remove(c);
+            posDiag.remove(r + c);
+            negDiag.remove(r - c);
+            board[r][c] = '.';
+            
         }
-        int maxLeft = Math.min(row, col);
-        for (int i = 1; i <= maxLeft; i++) {
-            if (board[row - i][col - i]) {
-                return false;
-            }
-        }
-        int maxRight = Math.min(row, board.length - 1 - col);
-        for (int i = 1; i <= maxRight; i++) {
-            if (board[row - i][col + i]) return false;
-        }
-        return true;
     }
 }
