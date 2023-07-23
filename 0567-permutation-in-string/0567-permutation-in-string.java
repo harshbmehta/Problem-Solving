@@ -1,3 +1,7 @@
+/*
+Time complexity: O(l1+26l1(l2-l1))
+Space complexity: O(1). s1map and s2map of size 26 is used
+*/
 class Solution {
     public boolean checkInclusion(String s1, String s2) {
         if (s1.length() > s2.length())
