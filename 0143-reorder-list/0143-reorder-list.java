@@ -18,7 +18,7 @@ class Solution {
         }
 
         ListNode start = curr.next;
-        curr.next = null;
+        curr.next = null; // middle node will end up being last so null
         ListNode prev = null;
 
         while(start!=null) {
