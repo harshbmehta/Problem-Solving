@@ -3,8 +3,8 @@ Time complexity:
 
 In the set() function, in each call, we push a (timestamp, value) pair in the key bucket, which takes O(L) time to hash the string. Thus, for M calls overall it will take, $O(M.L)$ time.
 
-In the get() function, we use binary search on the key's bucket which can have at most M elements and to hash the string it takes O(L)O(L)O(L) time, thus overall it will take O(L⋅logM)O(L \cdot logM)O(L⋅logM) time for binary search.
-And, for N calls overall it will take, $O(N \cdot L \cdot logM)$ time.
+In the get() function, we use binary search on the key's bucket which can have at most M elements and to hash the string it takes O(L) time, thus overall it will take O(L⋅logM) time for binary search.
+And, for N calls overall it will take, $O(N.L.logM)$ time.
 
 Space complexity:
 
@@ -38,7 +38,7 @@ class TimeMap {
         if (!keyTimeMap.containsKey(key)) {
             return "";
         }
-        
+        // Constraint: All the timestamps timestamp of set are strictly increasing.
         if (timestamp < keyTimeMap.get(key).get(0).getKey()) {
             return "";
         }
