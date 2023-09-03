@@ -6,7 +6,7 @@ class Solution {
      * Space Complexity: O(n)
      */
      public int[] topKFrequent(int[] nums, int k) {
-        Map<Integer, Integer> count = new HashMap<>();
+         Map<Integer, Integer> count = new HashMap<>();
          List<Integer> bucket[] = new ArrayList[nums.length+1];
         
         for (int num : nums) {
