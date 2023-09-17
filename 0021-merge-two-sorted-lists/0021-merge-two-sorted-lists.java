@@ -17,7 +17,6 @@ class Solution {
         if (list2 == null) return list1;
         
         
-        System.out.println(list1.val + ", " + list2.val);
         if (list1.val <= list2.val) {
             list1.next = mergeTwoLists(list1.next, list2);
             return list1;
