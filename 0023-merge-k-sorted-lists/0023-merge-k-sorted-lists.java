@@ -26,9 +26,12 @@ class Solution {
     ListNode curr = dummy;
     Queue<ListNode> minHeap = new PriorityQueue<>((a, b) -> a.val - b.val);
 
-    for (final ListNode list : lists)
-      if (list != null)
-        minHeap.offer(list);
+    for (final ListNode list : lists) {
+        if (list != null) {
+            minHeap.offer(list); 
+        }
+    }
+
 
     while (!minHeap.isEmpty()) {
       ListNode minNode = minHeap.poll();
