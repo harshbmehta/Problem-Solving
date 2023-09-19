@@ -24,7 +24,7 @@ class Solution {
             // head = head to the original part
 
             while(count-- > 0) {
-                ListNode temp = head.next;
+                ListNode temp = head.next;                
                 head.next = curr;
                 curr = head;
                 head = temp;
