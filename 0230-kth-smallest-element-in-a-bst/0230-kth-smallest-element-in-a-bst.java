@@ -13,7 +13,7 @@
  *     }
  * }
  */
-// Time: O(n)
+// Time: O(n) in-order traversal of BST sorts it
 // Space: O(h)
 
 class Solution {
