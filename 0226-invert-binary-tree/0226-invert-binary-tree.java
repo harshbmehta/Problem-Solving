@@ -15,41 +15,14 @@
  */
 class Solution {
     public TreeNode invertTree(TreeNode root) {
-        if(root==null) {
+        if(root == null) {
             return root;
         }
-
-        Stack<TreeNode> stk = new Stack<>();
-        stk.push(root);
-
-        while(!stk.isEmpty()) {
-            TreeNode top = stk.pop();
-            TreeNode left = top.left;
-            top.left = top.right;
-            top.right = left;
-
-            if(top.left != null) {
-                stk.push(top.left);
-            }
-
-            if(top.right != null) {
-                stk.push(top.right);
-            }
-        }
-        return root;
-
-        // Recursive solution
-        // public TreeNode invertTree(TreeNode root) {
         
-        // if (root == null) {
-        //     return null;
-        // }
-
-        // final TreeNode left = root.left,
-        //         right = root.right;
-        // root.left = invertTree(right);
-        // root.right = invertTree(left);
-        // return root;
-    
+        TreeNode temp = root.left;
+        root.left = invertTree(root.right);
+        root.right = invertTree(temp);
+        
+        return root;        
     }
 }
