@@ -22,8 +22,9 @@ class Solution {
     // Insert the interval newInterval, into the list interval keeping the sorting order intact.
     private int[][] insertInterval(int[][] intervals, int[] newInterval) {
         boolean isIntervalInserted = false;
+        //***
         List<int[]> intervalLs = new ArrayList<>(Arrays.asList(intervals));
-
+        //***
         for (int i = 0; i < intervals.length; i++) {
             if (newInterval[0] < intervals[i][0]) {
                 // Found the position, insert the interval and break from the loop.
@@ -39,7 +40,9 @@ class Solution {
             intervalLs.add(newInterval);
         }
 
+         //***
         return intervalLs.toArray(new int[intervalLs.size()][2]);
+         //***
     }
 
     public int[][] insert(int[][] intervals, int[] newInterval) {
