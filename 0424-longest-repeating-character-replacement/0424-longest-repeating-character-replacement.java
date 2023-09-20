@@ -5,7 +5,7 @@
 Space: O(1): Similar to the previous approaches, this approach requires an auxiliary frequency map. The maximum number of keys in the map equals the number of unique characters in the string. If there are mmm unique characters, then the memory required is proportional to m. So the space complexity is O(m). Considering uppercase English letters only, m=26.
 */
 
-class Solution {
+class Solution {    
     public int characterReplacement(String s, int k) {
         int left = 0;
         int[] freq = new int[26];
