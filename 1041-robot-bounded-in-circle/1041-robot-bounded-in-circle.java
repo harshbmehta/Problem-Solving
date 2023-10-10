@@ -1,3 +1,10 @@
+/*
+Time complexity: O(N), where N is a number of instructions
+to parse.
+
+Space complexity: no extra space except varibles
+*/
+
 class Solution {
     public boolean isRobotBounded(String instructions) {
         int x=0;
@@ -42,7 +49,7 @@ class Solution {
         if(x==0 && y==0) {
             return true;
         }
-        
+        // if the robot doesn't face north at the end of the first cycle, that's the limit cycle trajectory. It is a mathematical deduction
         if(direction.equals("NORTH")) {
             return false;
         }
