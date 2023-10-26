@@ -1,26 +1,22 @@
 class Solution {
     public int countSubstrings(String s) {
-        if(s.length() == 0) {
-            return 0;
-        }
-        
-        int count=0;
-        for(int i=0; i<s.length();i++) {
-            count += extractPalindrome(s, i, i);
-            count += extractPalindrome(s, i, i+1);
-        }
-        
-        return count;
+    if(s == null || s.length() == 0) return 0;
+    int count = 0;
+    for(int i = 0; i<s.length();i++) {
+        count += extractPalindrome(s, i, i); // odd
+        count += extractPalindrome(s, i, i+1); //even
     }
-    
-    private int extractPalindrome(String s, int i, int j) {
+
+    return count;
+    }
+
+    private int extractPalindrome(String str, int left, int right) {
         int count = 0;
-        while(i>=0 && j<s.length() && s.charAt(i) == s.charAt(j)) {
-            i--;
-            j++;
+        while(left>=0 && right<str.length() && str.charAt(left) == str.charAt(right)) {
+            left --;
+            right++;
             count++;
         }
-        
         return count;
     }
 }
